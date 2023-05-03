@@ -1,0 +1,58 @@
+#all{
+    background-color: whitesmoke;
+    height: 500px;
+    width:100%;
+
+}
+h1{
+    text-align: center;
+}
+body{
+    background-color: gray;
+}
+#menu{
+
+    height:50px;
+    display: inline-block;
+    width:80%;
+  
+}
+#menu p{
+    float:left;
+    margin: auto;
+    padding: 0%;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-left: 3px;
+    background-color: black;        
+    color:white;
+}
+#pic{
+    width:21%;
+    float:left;   
+    margin: 5px;
+}
+img{
+    width:70%;
+    height:70%;
+}
+
+
+#rating{
+ float:left;
+ width: 7%;
+    background-color: green;
+    height:50px;
+    color:white;
+    margin:5px;
+    font-size: 30pt;
+    padding:20px;
+
+}
+#score{
+    width:50%;
+    float:left;
+   
+
+    
+}

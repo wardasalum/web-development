@@ -1,0 +1,30 @@
+body{
+width:80%;
+text-align:center;
+border-right: 2px dashed #e91e63  ;
+border-left: 2px dashed #e91e63  ;
+font-family:sans-serif;
+
+}
+#whole{
+    float: left;
+    width:50%;
+}
+h1{
+    font-size: 12pt;
+
+}
+h2{
+    font-size: 12pt;
+    font-style: italic;
+    font-weight: lighter;
+}
+.img1,.img2,.img3{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width:350px;
+}
+img{
+    margin-top: 2px;
+    margin-bottom: 2px;
+}

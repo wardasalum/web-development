@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Online Quiz</title>
+</head>
+<style>
+  form{
+    background-color: aquamarine;
+  }
+  h1{
+    text-align: center;
+    color:blueviolet;
+  }
+  p{
+    font-family:'Times New Roman';
+    font-size: 15pt;
+  }
+  body{
+    background-color: grey;
+  }
+    
+</style>
+<script>
+  function submitQuiz() {
+  // get the form elements and their values
+  var form = document.querySelector('form');
+  var q1 = form.q1.value;
+  var q2 = form.q2.value;
+  var q3 = form.q3.value;
+
+  // calculate the score
+  var score = 0;
+  if (q1 === 'a') score++;
+  if (q2 === 'b') score++;
+  if (q3 === 'a') score++;
+
+  // display the results
+  var results = document.getElementById('results');
+  results.innerHTML = '<h2">Results:</h2><p>You got ' + score + ' out of 3 questions correct.</p>';
+  results.style.color="blue";
+  results.style.border=" 2px solid green";
+  results.style.width="50%";
+  results.style.marginTop="20px";
+}
+
+</script>
+<body>
+    <div class="container">
+  <h1>Online Quiz</h1>
+
+  <p>Instructions: Answer the following questions and click the "Submit" button when you're done.</p>
+
+  <form>
+    <h2>Question 1:</h2>
+    <p>What is the first president of Tanzania.?</p>
+    <label><input type="radio" name="q1" value="a">a) kikwete</label><br>
+    <label><input type="radio" name="q1" value="b">b) mkapa</label><br>
+    <label><input type="radio" name="q1" value="c">c) Nyerere</label><br>
+
+    <h2>Question 2:</h2>
+    <p>Which is the biggest ocean in the world.?</p>
+    <label><input type="radio" name="q2" value="a">a) Indian Ocean</label><br>
+    <label><input type="radio" name="q2" value="b">b) Pacific sea</label><br>
+    <label><input type="radio" name="q2" value="c">c) Atlantic Ocean</label><br>
+
+    <h2>Question 3:</h2>
+    <p>Which is richest country in the world.?</p>
+    <label><input type="radio" name="q3" value="a">a) Ireland</label><br>
+    <label><input type="radio" name="q3" value="b">b) Tanzania</label><br>
+    <label><input type="radio" name="q3" value="c">c) Kenya</label><br>
+
+    <button type="button" onclick="submitQuiz()">Submit</button>
+  </form>
+</div>
+  <div id="results"></div>
+</body>
+</html>
