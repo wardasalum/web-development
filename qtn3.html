@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Credit Card Validation</title>
+  <script>
+    function validateCreditCard() {
+      var creditCardNumber = document.getElementById('creditCardNumber').value;
+      var cardType = document.getElementById('cardType').value;
+      
+      var regex;
+      var errorMessage;
+      
+      switch (cardType) {
+        case 'American Express':
+          regex = /^3[47][0-9]{13}$/;
+          errorMessage = 'Invalid American Express card number!';
+          break;
+        case 'Master Card':
+          regex = /^5[1-5][0-9]{14}$/;
+          errorMessage = 'Invalid Master Card number!';
+          break;
+        case 'VISA':
+          regex = /^4[0-9]{12}(?:[0-9]{3})?$/;
+          errorMessage = 'Invalid VISA card number!';
+          break;
+        case 'Discover':
+          regex = /^6011[0-9]{12}(?:[0-9]{3})?$/;
+          errorMessage = 'Invalid Discover card number!';
+          break;
+        case 'Diners Club':
+          regex = /^3(?:0[0-5]|[68][0-9])[0-9]{11}$/;
+          errorMessage = 'Invalid Diners Club card number!';
+          break;
+        default:
+          regex = /(?:)/;
+          errorMessage = 'Invalid card type!';
+          break;
+      }
+      
+      if (!regex.test(creditCardNumber)) {
+        alert(errorMessage);
+        return false;
+      }
+      
+      return true;
+    }
+  </script>
+</head>
+<body>
+  <h1>Credit Card Validation</h1>
+  <form onsubmit="return validateCreditCard();">
+    <label for="creditCardNumber">Credit Card Number:</label>
+    <input type="text" id="creditCardNumber" required><br>
+    <br>
+
+    <label for="cardType">Card Type:</label>
+    <select id="cardType" required>
+      <option value="">Select a card type</option>
+      <option value="American Express">American Express</option>
+      <option value="Master Card">Master Card</option>
+      <option value="VISA">VISA</option>
+      <option value="Discover">Discover</option>
+      <option value="Diners Club">Diners Club</option>
+    </select><br><br>
+    
+    <input type="submit" value="Validate">
+  </form>
+</body>
+</html>

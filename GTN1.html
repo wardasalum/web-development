@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form_Validation</title>
+
+    <style>
+        .error {
+          color: red;
+        }
+       
+        span{
+          color: red;
+        }
+    </style>
+    
+</head>
+<body>
+    <div class="container"> 
+        <table>
+            <tr>
+          <td> <p style="font-size: 28.5px; font-weight: bolder;">Test JavaScript Form Validation</p></td>
+            </tr>
+            <form id="myForm" onsubmit="return validateForm()">
+                <tr>
+               <td> <label for="name" style="margin-right: 150px;">Name <span>*</span></label></td>
+                <td><input type="text" id="name" required maxlength="20" required></td>
+            </tr>
+                <br><br>
+                <tr>
+               <td> <label for="address" style="margin-right: 136px;">Address</label></td>
+               <td> <textarea id="address" required></textarea></td>
+            </tr>
+            
+                <tr>
+               <td> <label for="zipcode" style="margin-right: 128px;">Zip Code <span>*</span></label></td>
+               <td> <input type="text" id="zipcode" required maxlength="20"></td>
+                </tr>
+    
+                <tr>
+             <td>   <label for="countries" style="margin-right: 136px; font-size: 16px;">Country <span>*</span></label></td>
+              <td>  <select id="countries" required>
+                    <option value="" selected disabled>Please select...</option>
+                    <option value="Tanzania" class="tanzania">Tanzania</option>
+                    <option value="Kenya" class="kenya">Kenya</option>
+                    <option value="Uganda" class="uganda">Uganda</option>
+                    
+                </select>
+                </td></tr>
+                  <tr>
+                   <td> <label for="gender" style="margin-right: 138px;">Gender <span>*</span></label></td>
+                   <td><input type="radio" class="radio" id="genderMale" name="gender" value="Male" required>Male
+                    <input type="radio" class="radio" id="genderFemale" name="gender" value="Female" required>Female
+               </td>
+               <tr>  
+                   <td> <label for="preferences" style="margin-right: 109px;">Preferences <span>*</span></label></td>
+                  <td>  <input type="checkbox" name="preferences" value="red"> Red
+                    <input type="checkbox" name="preferences" value="green"> Green
+                    <input type="checkbox" name="preferences" value="blue"> Blue
+                    </td>
+               </tr>
+                <tr>
+               <td> <label for="email" style="margin-right: 150px;">Email <span>*</span></label></td>
+               <td> <input type="email" id="email" name="email" required></td>
+                </tr>
+                <tr>
+             <td>   <label for="phone" style="margin-right: 99px;">Phone Number <span>*</span></label></td>
+              <td> <input type="text" id="phone" name="phone" required></td>
+                </tr>
+               <tr>
+                <td><label for="password" style="margin-right: 26px;">Password (6-8 characters) <span>*</span></label></td>
+               <td> <input type="password" id="password" required minlength="6" maxlength="8"></td>
+                </tr>
+              <tr>
+               <td><label for="verifyPassword" style="margin-right: 83px;">Verify Password <span>*</span></label></td>
+               <td><input type="password" id="verifyPassword" required minlength="6" maxlength="8"></td>
+                </tr>
+                <br><br>
+            <tr>
+                <td> <button type="submit" class="btn" style="width: 75px;">SEND</button></td>
+                <td>  <button type="reset" class="btn" style="width: 75px;">CLEAR</button></td>
+                </tr>
+                
+                
+            </form>  
+              
+        </div></table>
+    </div>
+
+
+    <script>
+        function validateForm() {
+            var password = document.getElementById("password").value;
+            var verifyPassword = document.getElementById("verifyPassword").value;
+            
+            if (password !== verifyPassword) {
+                alert("Passwords do not match.");
+                return false;
+            }
+            
+  var checkboxes = document.querySelectorAll('input[name="preferences"]:checked');
+  
+  if (checkboxes.length < 2) {
+    alert("Please select at least two colors.");
+    return false;
+  }
+            
+            // Form is valid, proceed with submission
+            alert('Form submitted successfully!');
+            return true;
+        }
+    </script>
+    
+</body>
+</html>

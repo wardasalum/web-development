@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Student Registration Form</title>
+	<script type="text/javascript">
+		function validateForm() {
+			// Get form inputs
+			var name = document.forms["registrationForm"]["name"].value;
+			var regNumber = document.forms["registrationForm"]["regNumber"].value;
+			var dob = document.forms["registrationForm"]["dob"].value;
+			var program = document.forms["registrationForm"]["program"].value;
+			var email = document.forms["registrationForm"]["email"].value;
+			var tempAddress = document.forms["registrationForm"]["tempAddress"].value;
+			var phoneNumber = document.forms["registrationForm"]["phoneNumber"].value;
+			var permanentAddress = document.forms["registrationForm"]["permanentAddress"].value;
+
+			// Validate inputs
+			if (name == "" || !/^[a-zA-Z ]{1,30}$/.test(name)) {
+				alert("Please enter a valid name.");
+				return false;
+			}
+			if (regNumber == "" || !/^[a-zA-Z0-9]+$/.test(regNumber)) {
+				alert("Please enter a valid register number.");
+				return false;
+			}
+			if (dob == "") {
+				alert("Please enter your date of birth.");
+				return false;
+			}
+			if (program == "") {
+				alert("Please select a program.");
+				return false;
+			}
+			if (email == "" || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+				alert("Please enter a valid email address.");
+				return false;
+			}
+			if (tempAddress == "") {
+				alert("Please enter your temporary address.");
+				return false;
+			}
+			if (phoneNumber == "" || !/^\d{10}$/.test(phoneNumber)) {
+				alert("Please enter a valid phone number.");
+				return false;
+			}
+
+			// If "Permanent address is same as temporary address" checkbox is checked,
+			// set the value of permanent address to the value of temporary address and disable the input
+			if (document.getElementById("permanentAddressCheckbox").checked) {
+				document.forms["registrationForm"]["permanentAddress"].value = tempAddress;
+				document.forms["registrationForm"]["permanentAddress"].disabled = true;
+			}
+			return true;
+		}
+	</script>
+</head>
+<body>
+	<table>
+	<form name="registrationForm" onsubmit="return validateForm()">
+		<h2>Student Registration Form</h2>
+		<tr><td><label for="name">Name:</label></td>
+		<td><input type="text" name="name" maxlength="30"><br></td></tr>
+
+		<tr><td><label for="regNumber">Register Number:</label></td>
+		<td><input type="text" name="regNumber"><br></td></tr>
+
+		<tr><td><label for="dob">Date of Birth:</label></td>
+		<td><input type="date" name="dob"><br></td></tr>
+
+		<tr><td><label for="program">Program:</label></td>
+		<td><select name="program">
+			<option value=""></option>
+			<option value="BCS">BCS</option>
+			<option value="BITAM">BITAM</option>
+			<option value="BITA">BITA</option>
+		</select><br></td></tr>
+
+		<tr><td><label for="email">Email:</label></td>
+		<td><input type="email" name="email"><br></td></tr>
+
+		<tr><td><label for="tempAddress">Temporary Address:</label></td>
+		<td><textarea name="tempAddress"></textarea><br></td></tr>
+
+		<tr><td><label for="permanentAddress">Permanent Address:</label></td>
+		<td><textarea name="permanentAddress"></textarea><br></td></tr>
+
+		<tr><td><label for="phoneNumber">Phone Number:</label></td>
+        <td><input type="tel" name="phoneNumber" pattern="[0-9]{10}"><br></td></tr>
+        <tr><td><label for="permanentAddressCheckbox">Permanent address is same as temporary address:</label></td>
+        <td><input type="checkbox" id="permanentAddressCheckbox"><br></td></tr>
+    
+        <tr><td><input type="submit" value="Submit"></td></tr>
+    </form>
+</table>
+</body>
+</html>    
