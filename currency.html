@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Currency Converter</title>
+  </head>
+  <body>
+    <form id="currency-form">
+      <label for="from-currency">From:</label>
+      <select id="from-currency" name="from-currency">
+        <option value="USD">US Dollar</option>
+        <option value="EUR">Euro</option>
+        <option value="GBP">British Pound</option>
+      </select>
+      <br>
+      <label for="to-currency">To:</label>
+      <select id="to-currency" name="to-currency">
+        <option value="USD">US Dollar</option>
+        <option value="EUR">Euro</option>
+        <option value="GBP">British Pound</option>
+      </select>
+      <br>
+      <label for="amount">Amount:</label>
+      <input type="number" id="amount" name="amount" required>
+      <br>
+      <button type="submit">Convert</button>
+    </form>
+    <div id="result"></div>
+    <script>
+      const currencyForm = document.querySelector('#currency-form');
+      const resultElement = document.querySelector('#result');
+      
+      // Define function to fetch currency conversion
+      async function fetchCurrencyConversion(fromCurrency, toCurrency, amount) {
+        const apiKey = 'YOUR_API_KEY_HERE';
+        const apiUrl = `https://api.exchangerate-api.com/v4/latest/${fromCurrency}`;
+
+        try {
+          const response = await fetch(apiUrl);
+          const data = await response.json();
+          const rate = data.rates[toCurrency];
+          const convertedAmount = amount * rate;
+          return { amount: convertedAmount, error: null };
+        } catch (error) {
+          return { amount: null, error: 'Error fetching exchange rate data' };
+        }
+      }
+      
+      // Define function to handle form submission
+      async function handleFormSubmit(event) {
+        event.preventDefault();
+        const fromCurrency = document.querySelector('#from-currency').value;
+        const toCurrency = document.querySelector('#to-currency').value;
+        const amount = parseFloat(document.querySelector('#amount').value);
+        
+        // Check for invalid input
+        if (isNaN(amount)) {
+          resultElement.textContent = 'Invalid amount';
+          return;
+        }
+        
+        // Fetch currency conversion
+        const { amount: convertedAmount, error } = await fetchCurrencyConversion(fromCurrency, toCurrency, amount);
+        
+        // Check for error
+        if (error) {
+          resultElement.textContent = error;
+          return;
+        }
+        
+        // Store result in local storage
+        const result = {
+          fromCurrency,
+          toCurrency,
+          amount,
+          convertedAmount,
+        };
+        localStorage.setItem('currencyConversion', JSON.stringify(result));
+        
+        // Display result
+        resultElement.textContent = `${amount} ${fromCurrency} = ${convertedAmount} ${toCurrency}`;
+      }
+      
+      currencyForm.addEventListener('submit', handleFormSubmit);
+    </script>
+  </body>
+</html>

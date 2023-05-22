@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Contact Us</title>
+    <style>
+      body{
+        background-color: lavender;
+      }
+      #map {
+/*        height: 150px;
+        width: 200px;
+        margin-top: 0px;*/
+        
+      }
+      form {
+/*        display: flex;
+        flex-direction: column;        
+        margin: 0 auto;
+        position: absolute;
+        left: 55%; */
+        width: 70%;
+        padding: 20px;
+        border: 2px solid white;
+        float:left;
+        justify-content: center;
+       
+      }
+      label,
+      input,
+      textarea {
+        margin-bottom: 10px;
+        width: 100%;
+        box-sizing: border-box;
+        
+      }
+      input[type="submit"] {
+        background-color: rgb(41, 128, 185);
+        color: white;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+      }
+      span{
+        
+        color: rgb(41, 128, 185);
+        font-size: 22px;
+        text-align: center;
+        font-weight: bold;
+        padding: 20px;
+        
+      }
+      input[type="button"]{
+        background-color: green;
+        width: 100%;
+        color: white;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+      }
+      a{
+        text-decoration: none;
+        color: rgb(41, 128, 185);
+        font-weight: bolder;
+        font-size: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <form>
+      <!--<span>Fill in Information <br></span> -->
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="address">Address:</label>
+      <input type="text" id="address" name="address" required>
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+      <label for="comments">Comments:</label>
+      <textarea id="comments" name="comments" required></textarea>
+      <input type="submit" value="Submit">
+      <a href="login.html">Go to Login</a><br>
+      <a href="Tutorial.html">Home</a>
+    </form>
+    <div id="map">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3966.731239765634!2d39.19233361476875!3d-6.166734095535347!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zNsKwMTAnMDAuMiJTIDM5wrAxMSc0MC4zIkU!5e0!3m2!1sen!2stz!4v1682877153144!5m2!1sen!2stz" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  </div>
+  
+   <!-- <script src="https://maps.googleapis.com/maps/api/js?key=-6.16673409999999,39.1945223"></script>-->
+    <script src="contact.js"></script>
+  </body>
+</html>

@@ -1,0 +1,35 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+  
+</head>
+<body>
+    <form>
+        <label for="regNumber">Registration Number:</label>
+        <input type="text" id="regNumber" name="regNumber">
+        <button type="submit">Submit</button>
+      </form>
+      
+</body>
+<script>
+   const form = document.querySelector('form');
+const input = document.querySelector('#regNumber');
+
+form.addEventListener('submit', function() {
+  const regNumber = input.value;
+  const regNumberRegex = /^([A-Z]{3,5})\/(\d{1,5})\/(\d{1,5})\/(\d{1,5})\/([A-Z]{2})$/;
+
+  if (regNumberRegex.test(regNumber)) {
+    alert("Valid registration number.");
+  } else {
+    alert("Invalid registration number.");
+  }
+});
+
+</script>
+</html>

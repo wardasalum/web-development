@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Change color example</title>
+  </head>
+  <body>
+    <h1 id="heading">Hello</h1>
+    <button id="red-button">Red</button>
+    <button id="green-button">Green</button>
+    <button id="blue-button">Blue</button>
+    <script>
+      function changeColor(color) {
+        const element = document.querySelector('#heading');
+        if (color === 'red') {
+          element.style.color = 'red';
+        } else if (color === 'green') {
+          element.style.color = 'green';
+        } else if (color === 'blue') {
+          element.style.color = 'blue';
+        } else {
+          element.style.color = 'black';
+        }
+      }
+
+      document.querySelector('#red-button').addEventListener('click', function() {
+        changeColor('red');
+      });
+
+      document.querySelector('#green-button').addEventListener('click', function() {
+        changeColor('green');
+      });
+
+      document.querySelector('#blue-button').addEventListener('click', function() {
+        changeColor('blue');
+      });
+    </script>
+  </body>
+</html>

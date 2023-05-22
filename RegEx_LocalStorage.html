@@ -1,0 +1,113 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form id="myForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name"><br>
+      
+        <label for="age">Age:</label>
+        <input type="text" id="age" name="age"><br>
+      
+        <label for="address">Address:</label>
+        <input type="text" id="address" name="address"><br>
+      
+        <label for="phone">Phone:</label>
+        <input type="text" id="phone" name="phone"><br>
+      
+        <label for="email">Email:</label>
+        <input type="text" id="email" name="email"><br>
+      
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password"><br>
+      
+        <input type="submit" value="Submit">
+      </form>
+      <div id="displayData"></div>
+</body>
+    <script>
+        // Regular expressions for validating form inputs
+const nameRegex = /^[a-zA-Z ]+$/;
+const ageRegex = /^\d+$/;
+const phoneRegex = /^\d{10}$/;
+const emailRegex = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/;
+
+const form = document.getElementById('myForm');
+
+form.addEventListener('submit', (event) => {
+  event.preventDefault(); // Prevent the form from submitting
+
+  // Get the form values
+  const name = form.elements['name'].value.trim();
+  const age = form.elements['age'].value.trim();
+  const address = form.elements['address'].value.trim();     //The trim() method is a built-in JavaScript method that removes whitespace characters from both ends of a string.
+  const phone = form.elements['phone'].value.trim();        //// Whitespace characters include spaces, tabs, and line breaks.
+  const email = form.elements['email'].value.trim();        
+  const password = form.elements['password'].value.trim();
+
+  // Validate the form inputs using regular expressions
+  if (!nameRegex.test(name)) {
+    alert('Please enter a valid name');
+    return;
+  }
+
+  if (!ageRegex.test(age)) {
+    alert('Please enter a valid age');
+    return;
+  }
+
+  if (address.length === 0) {
+    alert('Please enter an address');
+    return;
+  }
+
+  if (!phoneRegex.test(phone)) {
+    alert('Please enter a valid phone number');
+    return;
+  }
+
+  if (!emailRegex.test(email)) {
+    alert('Please enter a valid email address');
+    return;
+  }
+
+  if (!passwordRegex.test(password)) {
+    alert('Please enter a valid password (minimum 8 characters with at least one letter and one number)');
+    return;
+  }
+
+  // Store the form values in local storage
+  localStorage.setItem('name', name);
+  localStorage.setItem('age', age);
+  localStorage.setItem('address', address);
+  localStorage.setItem('phone', phone);
+  localStorage.setItem('email', email);
+  localStorage.setItem('password', password);
+
+  // Display a success message
+  alert('Form submitted successfully');
+
+   // Display the submitted data below the form
+   displayData.innerHTML = `
+    <h2>Submitted Data</h2>
+    <p><strong>Name:</strong> ${name}</p>
+    <p><strong>Age:</strong> ${age}</p>
+    <p><strong>Address:</strong> ${address}</p>
+    <p><strong>Phone:</strong> ${phone}</p>
+    <p><strong>Email:</strong> ${email}</p>
+    <p><strong>Password:</strong> ${password}</p>
+  `;
+
+  // Reset the form
+  form.reset();
+});
+
+    </script>
+</html>
+
+  

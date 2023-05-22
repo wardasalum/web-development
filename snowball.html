@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Snow!!!</title>
+<link href="snow.css" rel="stylesheet" type="text/css" />
+<script src="snow.js" type="text/javascript"></script>
+</head>
+<script>
+    function snow() {
+let boxH;
+window.onload = function snow() {
+setInterval(newSnowBall, 100);
+setInterval(fall, 50);
+// gets the height of #snow-scene
+boxH = parseInt(window.getComputedStyle(document.getElementById("snow-scene")).height);
+}
+    }
+</script>
+<body>
+<h1>Snow Day!</h1>
+<div id="snow-scene"></div>
+</body>
+</html>
+<style>
+/* CSS for Problem 1 */
+html, body { height: 100%; }
+h1 {
+font-family: Helvetica, Arial, sans-serif;
+text-align: center;
+}
+.snowball {
+background-color: white;
+border: 1px solid black;
+border-radius: 50%;
+position: absolute;
+}
+#snow-scene {
+background-color: lightblue;
+height: 70%;
+margin: auto auto;
+position: relative;
+width: 800px;
+}
+</style>
